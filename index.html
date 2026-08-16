@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090b10" />
+    <meta
+      name="description"
+      content="NIKKE 指挥官工具箱：装备词条、资源计算与定制模组记录。"
+    />
+    <title>NIKKE 指挥官工具箱</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#home" aria-label="返回主页">
+          <span class="brand-mark">N</span>
+          <span class="brand-copy">
+            <strong>NIKKE TOOL</strong>
+            <small>COMMANDER SYSTEM</small>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="主导航">
+          <p class="nav-label">功能模块</p>
+          <a class="nav-item active" href="#home" data-view="home">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 13h6V4H4v9Zm0 7h6v-5H4v5Zm10 0h6v-9h-6v9Zm0-16v5h6V4h-6Z"/></svg>
+            </span>
+            <span>总览</span>
+          </a>
+          <a class="nav-item" href="#equipment" data-view="equipment">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m12 2 2.2 3.2 3.8.7-.9 3.8 2.6 2.8-2.6 2.8.9 3.8-3.8.7L12 22l-2.2-3.2-3.8-.7.9-3.8-2.6-2.8 2.6-2.8L6 5.9l3.8-.7L12 2Zm0 6.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Z"/></svg>
+            </span>
+            <span>装备词条</span>
+          </a>
+          <a class="nav-item" href="#resources" data-view="resources">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Zm0 2.3L18 7.6l-6 3.3-6-3.3 6-3.3Zm-7 5 6 3.4v6.6l-6-3.4V9.3Zm8 10v-6.6l6-3.4v6.6l-6 3.4Z"/></svg>
+            </span>
+            <span>资源计算</span>
+          </a>
+          <a class="nav-item" href="#modules" data-view="modules">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm2 4v2h10V7H7Zm0 4v2h10v-2H7Zm0 4v2h6v-2H7Z"/></svg>
+            </span>
+            <span>定制模组记录</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="system-status">
+            <span class="status-dot"></span>
+            <div>
+              <strong>系统在线</strong>
+              <small>DATA SYNC READY</small>
+            </div>
+          </div>
+          <span class="version">V 0.1.0</span>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button class="menu-button" id="menuButton" aria-label="打开导航菜单" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="breadcrumb">
+            <span>ARK / COMMANDER</span>
+            <strong id="currentPage">控制中心</strong>
+          </div>
+          <div class="topbar-meta">
+            <span class="live-indicator"><i></i> LIVE</span>
+            <span class="date" id="currentDate"></span>
+            <button class="avatar" aria-label="指挥官账户">C</button>
+          </div>
+        </header>
+
+        <section class="view active" id="homeView" data-view-panel="home">
+          <div class="hero">
+            <div class="hero-copy">
+              <div class="eyebrow"><span>COMMANDER SUPPORT SYSTEM</span></div>
+              <h1>指挥官，<br /><em>欢迎归队。</em></h1>
+              <p>集中管理养成规划与装备数据，让每一份资源都有清晰去向。</p>
+            </div>
+            <div class="hero-signal" aria-hidden="true">
+              <div class="signal-ring ring-one"></div>
+              <div class="signal-ring ring-two"></div>
+              <div class="signal-core">N</div>
+              <span class="coordinate">35.6895° N<br />139.6917° E</span>
+            </div>
+            <div class="hero-code" aria-hidden="true">OPERATIVE<br />NO. 0001</div>
+          </div>
+
+          <div class="section-heading">
+            <div>
+              <span class="section-index">01</span>
+              <h2>选择功能</h2>
+            </div>
+            <p>SELECT A MODULE TO CONTINUE</p>
+          </div>
+
+          <div class="module-grid">
+            <button class="module-card card-equipment" data-open-view="equipment">
+              <span class="card-number">01</span>
+              <span class="card-icon">
+                <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 7 39 17l12 2-3 12 8 9-8 9 3 12-12 2-7 10-7-10-12-2 3-12-8-9 8-9-3-12 12-2 7-10Z"/><circle cx="32" cy="40" r="11"/><path d="m27 40 4 4 7-9"/></svg>
+              </span>
+              <span class="card-copy">
+                <small>EQUIPMENT ATTRIBUTES</small>
+                <strong>装备词条</strong>
+                <span>查看词条范围，评估装备属性与提升空间</span>
+              </span>
+              <span class="card-action">进入模块 <b>↗</b></span>
+            </button>
+
+            <button class="module-card card-resources" data-open-view="resources">
+              <span class="card-number">02</span>
+              <span class="card-icon">
+                <svg viewBox="0 0 64 64" aria-hidden="true"><path d="m32 7 22 12v26L32 57 10 45V19L32 7Z"/><path d="m10 19 22 12 22-12M32 31v26"/><path d="m22 14 22 12"/></svg>
+              </span>
+              <span class="card-copy">
+                <small>RESOURCE CALCULATOR</small>
+                <strong>资源计算</strong>
+                <span>计算养成消耗，快速规划等级与技能资源</span>
+              </span>
+              <span class="card-action">进入模块 <b>↗</b></span>
+            </button>
+
+            <button class="module-card card-modules" data-open-view="modules">
+              <span class="card-number">03</span>
+              <span class="card-icon">
+                <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="13" y="8" width="38" height="48" rx="3"/><path d="M22 20h20M22 30h20M22 40h12"/><path d="M39 40h3v3h-3z"/></svg>
+              </span>
+              <span class="card-copy">
+                <small>CUSTOM MODULE LOG</small>
+                <strong>定制模组记录</strong>
+                <span>记录洗练结果，跟踪库存与词条变更历史</span>
+              </span>
+              <span class="card-action">进入模块 <b>↗</b></span>
+            </button>
+          </div>
+
+          <footer class="dashboard-footer">
+            <span><i></i> LOCAL DATA STORAGE</span>
+            <span>LAST SYNC — JUST NOW</span>
+          </footer>
+        </section>
+
+        <section class="view module-detail" id="equipmentView" data-view-panel="equipment">
+          <div class="detail-header accent-yellow">
+            <button class="back-button" data-open-view="home">← 返回总览</button>
+            <span class="detail-kicker">MODULE 01 / EQUIPMENT ATTRIBUTES</span>
+            <h1>装备词条</h1>
+            <p>按角色管理四个部位的改造词条，上传游戏截图即可识别并更新。</p>
+          </div>
+
+          <div class="equipment-toolbar">
+            <div class="field-group character-field">
+              <label for="characterSelect">当前角色</label>
+              <div class="field-row">
+                <select id="characterSelect" aria-label="选择角色"></select>
+                <button class="secondary-button" id="addCharacterButton" type="button">＋ 添加角色</button>
+                <button class="icon-button danger-button" id="deleteCharacterButton" type="button" aria-label="删除当前角色" title="删除当前角色">×</button>
+              </div>
+            </div>
+            <div class="character-summary">
+              <span>已记录</span>
+              <strong id="recordedCount">0 / 12</strong>
+              <small>有效词条</small>
+            </div>
+          </div>
+
+          <section class="aggregate-panel" aria-labelledby="aggregateTitle">
+            <div class="aggregate-heading">
+              <div>
+                <span>CHARACTER ATTRIBUTE SUMMARY</span>
+                <h2 id="aggregateTitle">角色词条总览</h2>
+                <p>合并头部、躯干、手臂与腿部的相同词条</p>
+              </div>
+              <div class="total-tier-card">
+                <span>所有词条总阶数</span>
+                <strong id="totalTierCount">0</strong>
+                <small>TOTAL LEVELS</small>
+              </div>
+            </div>
+            <div class="aggregate-grid" id="aggregateGrid" aria-live="polite"></div>
+          </section>
+
+          <div class="equipment-layout">
+            <section class="gear-panel" aria-labelledby="gearPanelTitle">
+              <div class="panel-title">
+                <div><span>LOADOUT</span><h2 id="gearPanelTitle">装备总览</h2></div>
+                <p>选择一个部位以更新截图</p>
+              </div>
+              <div class="slot-tabs" id="slotTabs" role="tablist" aria-label="装备部位">
+                <button class="slot-tab active" type="button" role="tab" data-slot="head"><span>01</span><strong>头部</strong><small>HEAD</small></button>
+                <button class="slot-tab" type="button" role="tab" data-slot="chest"><span>02</span><strong>躯干</strong><small>BODY</small></button>
+                <button class="slot-tab" type="button" role="tab" data-slot="arms"><span>03</span><strong>手臂</strong><small>ARMS</small></button>
+                <button class="slot-tab" type="button" role="tab" data-slot="legs"><span>04</span><strong>腿部</strong><small>LEGS</small></button>
+              </div>
+              <div class="slot-content">
+                <div class="selected-slot-title">
+                  <div><span id="selectedSlotIndex">01</span><h3 id="selectedSlotName">头部装备</h3></div>
+                  <span class="slot-state" id="slotState">尚未记录</span>
+                </div>
+                <div class="attribute-list" id="attributeList"></div>
+                <button class="upload-trigger" id="uploadTrigger" type="button">
+                  <span class="upload-icon">↑</span>
+                  <span><strong>上传装备截图</strong><small>支持 PNG / JPG，单张不超过 10 MB</small></span>
+                  <b>选择图片</b>
+                </button>
+                <input id="equipmentImageInput" type="file" accept="image/png,image/jpeg,image/webp" hidden />
+              </div>
+            </section>
+
+            <aside class="reference-panel">
+              <div class="panel-title compact-title">
+                <div><span>15 LEVEL SCALE</span><h2>词条数值参考</h2></div>
+              </div>
+              <div class="reference-list" id="referenceList"></div>
+              <p class="reference-note">数值按最低至最高等差划分为 15 阶；保存时会自动匹配最接近阶级。</p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view module-detail" id="resourcesView" data-view-panel="resources">
+          <div class="detail-header accent-cyan">
+            <button class="back-button" data-open-view="home">← 返回总览</button>
+            <span class="detail-kicker">MODULE 02 / RESOURCE CALCULATOR</span>
+            <h1>资源计算</h1>
+            <p>角色等级、技能和装备养成资源统一计算。</p>
+          </div>
+          <div class="coming-soon"><span>02</span><strong>功能开发中</strong><p>下一步将接入目标等级、当前库存与资源缺口计算。</p></div>
+        </section>
+
+        <section class="view module-detail" id="modulesView" data-view-panel="modules">
+          <div class="detail-header accent-magenta">
+            <button class="back-button" data-open-view="home">← 返回总览</button>
+            <span class="detail-kicker">MODULE 03 / CUSTOM MODULE LOG</span>
+            <h1>定制模组记录</h1>
+            <p>保存每次洗练结果与定制模组使用记录。</p>
+          </div>
+          <div class="coming-soon"><span>03</span><strong>功能开发中</strong><p>下一步将接入角色装备、词条历史和模组库存台账。</p></div>
+        </section>
+      </main>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <dialog class="equipment-dialog" id="equipmentDialog">
+      <form method="dialog" class="dialog-card" id="equipmentForm">
+        <button class="dialog-close" value="cancel" aria-label="关闭">×</button>
+        <div class="dialog-heading">
+          <span>IMAGE ATTRIBUTE SCAN</span>
+          <h2>确认装备词条</h2>
+          <p id="dialogSubtitle">识别结果可手动修正，保存后将覆盖该部位原记录。</p>
+        </div>
+        <div class="scan-layout">
+          <div class="image-preview-wrap">
+            <img id="equipmentPreview" alt="待识别的装备截图预览" />
+            <div class="scan-progress" id="scanProgress"><i></i><span>正在识别截图文字…</span></div>
+          </div>
+          <div class="scan-results">
+            <div class="result-head"><span>有效词条</span><small>最多 3 条</small></div>
+            <div id="resultRows"></div>
+            <p class="scan-message" id="scanMessage" role="status"></p>
+          </div>
+        </div>
+        <div class="dialog-actions">
+          <button class="secondary-button" value="cancel">取消</button>
+          <button class="primary-button" id="saveEquipmentButton" type="submit" value="default">保存至当前装备</button>
+        </div>
+      </form>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
