@@ -128,6 +128,25 @@ function makeCharacter(name) {
   };
 }
 
+function makeDefaultCharacter() {
+  const tier = 11;
+  const attribute = (type) => ({
+    type,
+    value: getTiers(getAttributeDefinition(type))[tier - 1],
+    tier,
+  });
+
+  return {
+    ...makeCharacter("默认角色"),
+    equipment: {
+      head: [attribute("attack"), attribute("element"), attribute("ammo")],
+      chest: [attribute("attack"), attribute("element"), attribute("ammo")],
+      arms: [attribute("attack"), attribute("element"), attribute("critDamage")],
+      legs: [attribute("attack"), attribute("element"), attribute("critDamage")],
+    },
+  };
+}
+
 function loadEquipmentData() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -140,7 +159,7 @@ function loadEquipmentData() {
   } catch (error) {
     console.warn("Unable to restore equipment data", error);
   }
-  const character = makeCharacter("默认角色");
+  const character = makeDefaultCharacter();
   return { activeCharacterId: character.id, characters: [character] };
 }
 
